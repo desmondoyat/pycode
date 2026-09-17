@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PyCode — Python Online IDE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="python-logo"><span></span><span></span></div>
+        <div>
+          <div class="brand-name">PyCode</div>
+          <div class="brand-sub">Code • Build • Grow</div>
+        </div>
+      </div>
+
+      <div class="search">
+        <span>⌕</span>
+        <input id="projectSearch" type="text" placeholder="Search your projects...">
+      </div>
+
+      <nav class="nav">
+        <a class="active" href="#">⌂ <span>Home</span></a>
+        <a href="#projects">▣ <span>My Projects</span></a>
+        <a href="#community">♟ <span>Community</span></a>
+      </nav>
+
+      <div class="profile">
+        <div class="avatar">D</div>
+        <span>Desmond_Oyat</span>
+        <span class="chevron">⌄</span>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="left-rail">
+        <button class="rail-btn selected" title="Editor">⌘<span>Editor</span></button>
+        <button class="rail-btn" title="Files">□<span>Files</span></button>
+        <button class="rail-btn" title="Projects">▤<span>Projects</span></button>
+        <button class="rail-btn" title="Settings">⚙<span>Settings</span></button>
+      </aside>
+
+      <aside class="sidebar" id="projects">
+        <div class="section-title"><span>▰</span> My Projects</div>
+
+        <div class="project-select">
+          <span>MyFirstProject</span><span>⌄</span>
+        </div>
+
+        <div class="file-actions">
+          <button id="newFileBtn">＋ New File</button>
+          <button id="newFolderBtn">＋ New Folder</button>
+        </div>
+
+        <div class="tree">
+          <div class="tree-row folder"><span>⌄</span><span>📁</span><strong>MyFirstProject</strong></div>
+          <div class="tree-row indent folder"><span>›</span><span>📁</span>data</div>
+          <div class="tree-row indent folder"><span>›</span><span>📁</span>utils</div>
+          <div class="tree-row indent file active-file" data-file="main.py"><span></span><span>🐍</span>main.py <button>⋮</button></div>
+          <div class="tree-row indent file" data-file="calculator.py"><span></span><span>🐍</span>calculator.py</div>
+          <div class="tree-row indent file"><span></span><span>▤</span>readme.txt</div>
+        </div>
+
+        <div class="recent">
+          <div class="recent-title">◷ Recent Projects</div>
+          <div class="recent-row"><span>□</span>MyFirstProject <small>2 hours ago</small></div>
+          <div class="recent-row"><span>□</span>MathGame <small>1 day ago</small></div>
+          <div class="recent-row"><span>□</span>Website <small>3 days ago</small></div>
+        </div>
+
+        <div class="upgrade">
+          <div class="rocket">🚀</div>
+          <h3>Upgrade to Pro</h3>
+          <p>Get more storage, custom domains, and advanced features.</p>
+          <button>Go Pro</button>
+        </div>
+      </aside>
+
+      <section class="main-content">
+        <div class="editor-panel">
+          <div class="tabs">
+            <div class="tab active"><span>🐍</span><span id="tabName">main.py</span><button>×</button></div>
+            <button class="add-tab">＋</button>
+            <div class="editor-actions">
+              <button class="run-btn" id="runBtn">▶ <span>Run</span></button>
+              <button class="save-btn" id="saveBtn">▣ <span>Save</span></button>
+              <button class="more-btn">⋮</button>
+            </div>
+          </div>
+
+          <div class="editor-wrap">
+            <div class="line-numbers" id="lineNumbers"></div>
+            <textarea id="codeEditor" spellcheck="false"># Simple Python program
+name = input("What is your name? ")
+age = int(input("How old are you? "))
+
+print(f"\nHello {name}!")
+print(f"You are {age} years old.")
+
+# Let's do a little math
+if age >= 18:
+    print("You're an adult! 🎉")
+else:
+    print("You're still young! Keep learning! 💪")</textarea>
+          </div>
+
+          <div class="statusbar">
+            <span>Python 3.10</span>
+            <span id="cursorPos">Ln 1, Col 1</span>
+            <span>Spaces: 4</span>
+          </div>
+        </div>
+
+        <div class="output-panel">
+          <div class="output-tabs">
+            <button class="output-tab active">▷ Output</button>
+            <button class="output-tab">〉_ Terminal</button>
+            <button class="clear-btn" id="clearBtn">♧ Clear</button>
+          </div>
+          <div class="output" id="output">
+            <div class="running">▶ <span>Ready to run main.py...</span></div>
+            <p class="muted">Click <strong>Run</strong> to test your Python program.</p>
+          </div>
+        </div>
+
+        <section class="welcome" id="community">
+          <div class="welcome-tabs"><span class="selected">▱ &nbsp; Projects</span><span>?</span><span>Help</span></div>
+          <div class="welcome-body">
+            <h1>Welcome to PyCode!</h1>
+            <p>Your online Python coding environment. Write, run, and save your projects easily.</p>
+            <div class="feature-grid">
+              <div class="feature blue"><div class="feature-icon">⌘</div><div><b>Write Code</b><small>Use our powerful editor with syntax highlighting.</small></div></div>
+              <div class="feature green"><div class="feature-icon">▶</div><div><b>Run Instantly</b><small>See your results in the output panel.</small></div></div>
+              <div class="feature purple"><div class="feature-icon">□</div><div><b>Save Projects</b><small>Keep your work safe in your account.</small></div></div>
+              <div class="feature orange"><div class="feature-icon">♟</div><div><b>Join Community</b><small>Share, learn, and build together.</small></div></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
